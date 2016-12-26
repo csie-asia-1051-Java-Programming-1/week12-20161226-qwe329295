@@ -6,12 +6,52 @@
  * Date: 2016/12/26
  * Author: 1050210XX 周永振老師
  */
-
+import java.util.Scanner;
 public class ex01 {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
+		Scanner scn =new Scanner(System.in);
+		int n=scn.nextInt();
+		int data[]= new int[n];
+		int a[]=new int[n];
+		for(int i=0;i<n;i++){
+			data[i]=scn.nextInt();//讓使用者一直輸入
+		}
+		for(int i=0;i<n;i++){
+			int b=0;
+			int c=data[i];
+			while(c>0){
+				b=b+c%10;//9122除以10的餘數
+				c=c/10;//912除以10的商
+				a[i]=b;//個位數字和
+			}
+		}
+		for (int i=0;i<n;i++){
+			for(int j=0;j<i;j++){
+				if(a[i]<a[j]){
+					int g=a[i];
+					a[i]=a[j];
+					a[j]=g;
+					int d =data[j];
+					data[i]=data[j];
+					data[j]=d;
+				}
+				if( a[i]==a[j]){
+					if(data[i]<data[j]){
+						int f=data[i];
+						data[i]=data[j];
+						data[j]=f;
+					}
+				}
+			}
+		}
+        for(int i=0;i<n;i++){
+        	System.out.print(data[i]+"\t");
+        }
+	}
+
 
 	}
 
-}
+
